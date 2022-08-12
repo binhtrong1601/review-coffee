@@ -53,6 +53,16 @@ audioPlay.src = dt.audio;
 window.onload = function () {
   audioPlay.play();
 
+  // ----------------- favourite --------------
+  const saveFavourite = document.querySelector("#save");
+  const dtList = localStorage.getItem("favouriteCoffee")
+    ? JSON.parse(localStorage.getItem("favouriteCoffee"))
+    : [];
+  saveFavourite.addEventListener("click", (e) => {
+    dtList.push(dt);
+    let favouriteCoffee = JSON.stringify(dtList);
+    localStorage.setItem("favouriteCoffee", favouriteCoffee);
+  });
   /**
    * Logic for rating star
    */
